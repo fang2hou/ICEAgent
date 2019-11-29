@@ -1,4 +1,3 @@
-
 #  Copyright (c) 2019. Zhou Fang
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -15,6 +14,14 @@ import audioplayer
 
 
 class TTSServiceOptions:
+    """ The option type for TTSService
+
+    Google Cloud Text-to-speech service can generate different audio according to
+    the customized option. Compared with the existing option management, This type
+    provides a better experience when user try to change the configuration of
+    TTSService, without any knowledge of the Google Cloud API type.
+
+    """
 
     def __init__(self,
                  language_code=None,
@@ -22,6 +29,20 @@ class TTSServiceOptions:
                  pitch=None,
                  volume_gain_db=None,
                  speaking_rate=None):
+        """Initialized the options
+
+        :param language_code: Optional. A BCP-47 language tag.
+            Default is 'en-US'.
+        :param voice_name: Optional. The name of this voice. Each distinct voice has a unique name.
+            Default is 'en-US-Wavenet-D'.
+        :param pitch: Optional. Speaking pitch, in the range [-20.0, 20.0].
+            Default is '0'.
+        :param volume_gain_db: Optional. Volume gain (in dB) of the normal native volume supported by
+                         the specific voice, in the range [-96.0, 16.0].
+            Default is 0.
+        :param speaking_rate: Optional. The synthesis sample rate (in hertz) for this audio.
+            Default is 1.0.
+        """
         self.language_code = language_code or 'en-US'
         self.voice_name = voice_name or 'en-US-Wavenet-D'
         self.pitch = pitch or 0
@@ -32,8 +53,17 @@ class TTSServiceOptions:
 class TTSService:
     def __init__(self, options: TTSServiceOptions = None):
         self.options = options or TTSServiceOptions()
+
         self.client = texttospeech.TextToSpeechClient()
         self.synthesis_input = None
+        self.voice = texttospeech.types.VoiceSelectionParams(
+            language_code=self.options.language_code,
+            name=self.options.voice_name)
+        self.audio_config = texttospeech.types.AudioConfig(
+            pitch=self.options.pitch,
+            volume_gain_db=self.options.volume_gain_db,
+            speaking_rate=self.options.speaking_rate,
+            audio_encoding=texttospeech.enums.AudioEncoding.MP3)
 
     def set_text(self, text):
         self.synthesis_input = texttospeech.types.SynthesisInput(text=text)
@@ -52,7 +82,7 @@ class TTSService:
     def save_as_file(self, path):
         response = self.client.synthesize_speech(self.synthesis_input, self.voice, self.audio_config)
         with open(path, 'wb') as out:
-            # Write the response to the output file.
+            # Write the response to the output file.p
             out.write(response.audio_content)
             print('Audio content written to file {}'.format(path))
 

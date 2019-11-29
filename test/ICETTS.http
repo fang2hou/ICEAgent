@@ -1,0 +1,31 @@
+### English Test
+POST 127.0.0.1:1688/icetts/play
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="text"
+Content-Type: text/plain
+
+The finally block, if specified, will be executed regardless if the try block raises an error or not.
+
+### Japanese Test
+
+POST 127.0.0.1:1688/icetts/play
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="text"
+Content-Type: text/plain
+
+２９日に総務省が公開した２９３９団体の収支報告書に、そんな内容のものが含まれていた。収入規模は、主要政党や日本医師連盟などの業界団体が並ぶ上位に続く１４位。自民党の各派閥を優にしのぐ。届け出の住所地をたずねると、群馬県内にある県営住宅にたどり着いた。
+--WebAppBoundary
+Content-Disposition: form-data; name="voice_name"
+Content-Type: text/plain
+
+ja-JP-Wavenet-C
+--WebAppBoundary
+Content-Disposition: form-data; name="language_code"
+Content-Type: text/plain
+
+ja-JP
+###

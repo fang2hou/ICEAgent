@@ -19,9 +19,21 @@ icetts = Blueprint('icetts', __name__)
 tts = gcloud.PlayableTTSService()
 
 
-def get_conf_by_key(request, arg):
+def get_conf_by_key(resp: request, key):
+    """ Get configuration by key
+
+        Unpack the form data in a better way.
+
+        Args:
+            resp: A Flask request.
+            key: A key to fetch form data.
+
+        Returns: A string contains data mapping specific key or None if the key
+                 is not included in request.
+
+        """
     try:
-        return request.form[arg]
+        return resp.form[key]
     except KeyError:
         return None
 
@@ -30,6 +42,13 @@ def get_conf_by_key(request, arg):
 # https://cloud.google.com/text-to-speech/docs/voices
 @icetts.route('/play', methods=['POST'])
 def play_tts():
+    """ Play TTS
+
+    Fetch audio from Google Cloud Text-to-speech service and play it.
+
+    Returns: A message indicating whether the operation succeed or not.
+
+    """
     if request.method != 'POST':
         return "Use POST to submit requests."
 

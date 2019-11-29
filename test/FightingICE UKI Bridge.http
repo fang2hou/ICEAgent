@@ -1,0 +1,7 @@
+### Read Test
+GET 127.0.0.1:1688/fu_bridge/read
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+### Save Test
+POST 127.0.0.1:1688/fu_bridge/save/iceice
+###
