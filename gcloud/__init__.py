@@ -1,1 +1,1 @@
-from .text_to_speech import TTSService
+from .text_to_speech import *

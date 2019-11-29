@@ -9,6 +9,9 @@ class Mp3Player:
         self.p.set_mrl(path)
 
     def play(self):
+        if self.p.is_playing():
+            self.stop()
+
         self.p.play()
 
     def stop(self):
