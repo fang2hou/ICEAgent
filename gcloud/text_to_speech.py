@@ -45,9 +45,9 @@ class TTSServiceOptions:
         """
         self.language_code = language_code or 'en-US'
         self.voice_name = voice_name or 'en-US-Wavenet-D'
-        self.pitch = pitch or 0
-        self.volume_gain_db = volume_gain_db or 0
-        self.speaking_rate = speaking_rate or 1.0
+        self.pitch = float(pitch or 0)
+        self.volume_gain_db = float(volume_gain_db or 0)
+        self.speaking_rate = float(speaking_rate or 1.0)
 
 
 class TTSService:
