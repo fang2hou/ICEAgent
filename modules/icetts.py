@@ -61,24 +61,33 @@ def play_tts():
     )
 
     try:
+        force = request.form['force']
+        force = True if force == 'true' else False
+    except KeyError:
+        force = False
+
+    try:
         text = request.form['text']
     except KeyError:
         print('No text found')
         return 'No text found.'
 
     tts.update_options(tts_opts)
-    tts.speak(text)
 
-    print('[ICETTS] Now playing\n'
-          'Language Code: {}\n'
-          'Voice Name: {}\n'
-          'Pitch: {}\n'
-          'Volume Gain Db: {}\n'
-          'Speaking Rate: {}\n'
-          'Text: {}\n'
-          '===================================='
-          .format(tts_opts.language_code, tts_opts.voice_name, tts_opts.pitch,
-                  tts_opts.volume_gain_db, tts_opts.speaking_rate, text)
-          )
+    result = tts.speak(text, force)
 
-    return 'TTS is playing.'
+    if result:
+        print('[ICETTS] Now playing\n'
+              'Language Code: {}\n'
+              'Voice Name: {}\n'
+              'Pitch: {}\n'
+              'Volume Gain Db: {}\n'
+              'Speaking Rate: {}\n'
+              'Text: {}\n'
+              '===================================='
+              .format(tts_opts.language_code, tts_opts.voice_name, tts_opts.pitch,
+                      tts_opts.volume_gain_db, tts_opts.speaking_rate, text)
+              )
+        return 'TTS is playing.'
+    else:
+        return 'TTS is now playing another audio.'

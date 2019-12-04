@@ -40,3 +40,10 @@ class Mp3Player:
     def stop(self):
         """Force to stop the playing."""
         self.p.stop()
+
+    def is_playing(self):
+        """ Check the player is playing some file or not.
+
+        :return: Boolean value indicated whether player is playing or not.
+        """
+        return self.p.is_playing()
