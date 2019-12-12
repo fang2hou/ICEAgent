@@ -4,11 +4,11 @@ ICEAgent
 
 A local service for research.  
 ICEAgent allow you to add custom functionality via modules.  
-The main propose of this propose of thie project is helping you use Google Cloud TTS in a easier way.
+The main propose of this project is helping you use Google Cloud TTS more regularly.
 
 Get Started
 -----
-1. Prepare a virtual Python environment.  
+1. Prepare a virtual Python `3.7` environment. (`3.8` is not support yet)  
 _`conda` is recommended, `venv` is also a good choice._
 2. Enter into the root directory of `ICEAgent`, run `pip install -r requirements.txt` in Terminal/Command Prompt.  
 3. Add `GOOGLE_APPLICATION_CREDENTIALS` to your PATH.  
@@ -17,17 +17,21 @@ _`conda` is recommended, `venv` is also a good choice._
     - <ins>macOS/Linux</ins>: run `env GOOGLE_APPLICATION_CREDENTIALS=path/to/your/json/file` in Terminal.
     - <ins>IDE(PyCharm etc.)</ins>: Add environment variables to your project.
 5. Install VLC media player.  
-<ins>macOS with Homebrew</ins>: run `brew cask install vlc` in Terminal  
-<ins>Others</ins>: Download from [VLC homepage](https://www.videolan.org/vlc/index.html).
+    - <ins>macOS with Homebrew</ins>: run `brew cask install vlc` in Terminal  
+    - <ins>Others</ins>: Download from [VLC homepage](https://www.videolan.org/vlc/index.html).
 
-5. Install Postman. (Optional, Just for testing)  
-<ins>macOS with Homebrew</ins>: run `brew cask install postman` in Terminal.  
-<ins>Others</ins>: Download from [Postman homepage](https://www.getpostman.com/).
+4. Install Postman. (Optional, Just for testing)  
+    - <ins>macOS with Homebrew</ins>: run `brew cask install postman` in Terminal.  
+    - <ins>Others</ins>: Download from [Postman homepage](https://www.getpostman.com/).
+5. run `ICEAgent` with `python main.py`.
 
 FAQ
 -----
-1. It warn me that the program cannot find LibVLC.  
+1. It warns me that the program cannot find LibVLC.  
 __A:__ Add vlc folder to your PATH. Same as you add GOOGLE_APPLICATION_CREDENTIALS.
+
+2. I want to add my own modules.  
+__A:__ `ICEAgent` use Flask Blueprint to handle modules. After you building a module with blueprint, you can easily add a route to your module in `main.py`
 
 Author
 -----
