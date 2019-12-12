@@ -1,6 +1,9 @@
 ICEAgent
 =============
-A local service for research. ICEAgent allow you to add custom functionality via modules.
+![](https://img.shields.io/badge/Ritsumeikan-ICE%20Lab-blue.svg?longCache=true&colorA=990000&colorB=444444&longCache=true&style=for-the-badge) ![](https://img.shields.io/badge/Python-3.7.5-blue.svg?longCache=true&style=for-the-badge) ![](https://img.shields.io/badge/Flask-1.1.1-orange.svg?longCache=true&style=for-the-badge) 
+
+A local service for research.  
+ICEAgent allow you to add custom functionality via modules.  
 The main propose of this propose of thie project is helping you use Google Cloud TTS in a easier way.
 
 Get Started
@@ -14,11 +17,11 @@ _`conda` is recommended, `venv` is also a good choice._
     - <ins>macOS/Linux</ins>: run `env GOOGLE_APPLICATION_CREDENTIALS=path/to/your/json/file` in Terminal.
     - <ins>IDE(PyCharm etc.)</ins>: Add environment variables to your project.
 5. Install VLC media player.  
-<ins>macOS</ins>: brew cask install vlc  
+<ins>macOS with Homebrew</ins>: run `brew cask install vlc` in Terminal  
 <ins>Others</ins>: Download from [VLC homepage](https://www.videolan.org/vlc/index.html).
 
 5. Install Postman. (Optional, Just for testing)  
-<ins>macOS</ins>: brew cask install postman  
+<ins>macOS with Homebrew</ins>: run `brew cask install postman` in Terminal.  
 <ins>Others</ins>: Download from [Postman homepage](https://www.getpostman.com/).
 
 FAQ
