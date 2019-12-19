@@ -44,14 +44,17 @@ class FightingICEUkiBridge:
 bridge = FightingICEUkiBridge()
 
 
-@fu_bridge.route('/save/<string:data>', methods=['POST'])
-def save(data: str):
+@fu_bridge.route('/save', methods=['POST'])
+def save():
     if request.method != 'POST':
         return 'Use POST to submit requests.'
 
-    bridge.save(data)
-    return 'Saved'
-
+    try:
+        data = request.form['data']
+        bridge.save(data)
+        return 'Saved'
+    except KeyError:
+        return "Save is failed."
 
 @fu_bridge.route('/read', methods=['GET'])
 def read():
