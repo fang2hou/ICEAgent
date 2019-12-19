@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/app.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ICEAgent Subtitle</title>
+</head>
+
+<body>
+    <div class="container main-body" id="rc-main-container">
+		<div class="row justify-content-center">
+            <button v-if="startButton.isShown" class="btn btn-success"
+                v-on:click="generateSession">{{ startButton.text }}</button>
+            <div class="subtitle_text">
+                {{ subtitle }}
+            </div>
+        </div>
+    </div>
+</body>
+<script src="src/app.js"></script>
+</html>
