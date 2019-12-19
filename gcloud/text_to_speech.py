@@ -91,15 +91,18 @@ class PlayableTTSService(TTSService):
     def __init__(self):
         super(PlayableTTSService, self).__init__()
         self.p = audioplayer.Mp3Player()
+        self.subtitle = ''
 
     def speak(self, text, force):
         if force or not self.p.is_playing():
             temp_file_path = 'temp_media.mp3'
 
             self.set_text(text)
+            self.subtitle = text
             self.save_as_file(temp_file_path)
             self.p.set_path(temp_file_path)
             self.p.play()
+
             return True
         else:
             return False

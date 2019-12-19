@@ -14,10 +14,9 @@ from flask import Blueprint, request
 
 import gcloud
 
-icetts = Blueprint('icetts', __name__)
+icetts = Blueprint('icetts', __name__, static_folder='../webapp/jimaku/')
 
 tts = gcloud.PlayableTTSService()
-
 
 def get_conf_by_key(resp: request, key):
     """ Get configuration by key
@@ -88,6 +87,19 @@ def play_tts():
               .format(tts_opts.language_code, tts_opts.voice_name, tts_opts.pitch,
                       tts_opts.volume_gain_db, tts_opts.speaking_rate, text)
               )
+
         return 'TTS is playing.'
     else:
         return 'TTS is now playing another audio.'
+
+
+@icetts.route('/get/subtitle', methods=['GET'])
+def subtitle_get():
+    if request.method != 'GET':
+        return "Use GET to submit requests."
+
+    return tts.subtitle
+
+@icetts.route('/jimaku', methods=['GET'])
+def subtitle_index():
+    return icetts.send_static_file('index.html')
