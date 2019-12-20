@@ -18,6 +18,7 @@ icetts = Blueprint('icetts', __name__, static_folder='../webapp/jimaku/')
 
 tts = gcloud.PlayableTTSService()
 
+
 def get_conf_by_key(resp: request, key):
     """ Get configuration by key
 
@@ -99,6 +100,15 @@ def subtitle_get():
         return "Use GET to submit requests."
 
     return tts.subtitle
+
+
+@icetts.route('/get/subtitle/pitch', methods=['GET'])
+def subtitle_pitch_get():
+    if request.method != 'GET':
+        return "Use GET to submit requests."
+
+    return str(tts.audio_config.pitch)
+
 
 @icetts.route('/jimaku', methods=['GET'])
 def subtitle_index():
