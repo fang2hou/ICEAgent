@@ -11,13 +11,15 @@
 #  all copies or substantial portions of the Software.
 
 from flask import Blueprint, request
+import time
 
 import gcloud
+
 
 icetts = Blueprint('icetts', __name__, static_folder='../webapp/jimaku/')
 
 tts = gcloud.PlayableTTSService()
-
+service_time = time.time()
 
 def get_conf_by_key(resp: request, key):
     """ Get configuration by key
@@ -51,6 +53,14 @@ def play_tts():
     """
     if request.method != 'POST':
         return "Use POST to submit requests."
+
+    global service_time
+    time_now = time.time()
+
+    if time_now < 1 + service_time:
+        return 'Please send the request later.'
+
+    service_time = time_now
 
     tts_opts = gcloud.TTSServiceOptions(
         language_code=get_conf_by_key(request, 'language_code'),
