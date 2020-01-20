@@ -57,7 +57,7 @@ def play_tts():
     global service_time
     time_now = time.time()
 
-    if time_now < 1 + service_time:
+    if time_now < 0.5 + service_time:
         return 'Please send the request later.'
 
     service_time = time_now

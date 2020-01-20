@@ -31,7 +31,8 @@ var JimakuMain = new Vue({
             // the scale size is 30.
             var LOW = -6;
             var HIGH = 6;
-            this.subtitle.fontSize = 20 + Math.round(30 * (parseFloat(response.data)-LOW)/(HIGH - LOW));
+            //this.subtitle.fontSize = 20 + Math.round(30 * (parseFloat(response.data)-LOW)/(HIGH - LOW));
+            this.subtitle.fontSize = 20;
           })
         }, 0)
       }, config.timeout)

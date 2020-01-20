@@ -18,7 +18,10 @@
 		<div class="row justify-content-center">
             <button v-if="startButton.isShown" class="btn btn-success"
                 v-on:click="generateSession">{{ startButton.text }}</button>
+            <!--
             <div class="subtitle_text" v-bind:style="{ fontSize: subtitle.fontSize + 'px' }">
+            -->
+            <div class="subtitle_text" v-bind:style="{ fontSize: 25 + 'px' }">
                 {{ subtitle.text }}
             </div>
         </div>
