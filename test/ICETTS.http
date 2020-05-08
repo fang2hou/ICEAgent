@@ -29,3 +29,24 @@ Content-Type: text/plain
 
 ja-JP
 ###
+
+### Real Test
+POST 127.0.0.1:1688/icetts/play
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="text"
+Content-Type: text/plain
+
+Garnet is so powerful releasing Heavy Kick that Zen should be very careful!
+--WebAppBoundary
+Content-Disposition: form-data; name="gain"
+Content-Type: text/plain
+
+0
+--WebAppBoundary
+Content-Disposition: form-data; name="pitch"
+Content-Type: text/plain
+
+6.4772
+###
